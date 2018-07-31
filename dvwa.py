@@ -61,6 +61,11 @@ driver.find_element_by_name("mtxMessage").click()
 driver.find_element_by_name("mtxMessage").clear()
 driver.find_element_by_name("mtxMessage").send_keys("This is a great space for comments. \n<script>alert(document.cookie)</script>")
 driver.find_element_by_name("btnSign").click()
+try:
+    alert = driver.switch_to_alert()
+    alert.accept()
+except:
+    pass
 time.sleep(3)
 driver.get("http://dvwa.f5demo.com/phpinfo.php")
 time.sleep(1)
