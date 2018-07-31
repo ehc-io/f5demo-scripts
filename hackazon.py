@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
+import unittest, time, re
+import time
+
+driver = webdriver.Firefox()
+driver.get("http://hackazon.f5demo.com/")
+driver.find_element_by_link_text("Sign In / Sign Up").click()
+driver.find_element_by_id("username").click()
+driver.find_element_by_id("username").clear()
+driver.find_element_by_id("username").send_keys("admin")
+driver.find_element_by_id("password").click()
+driver.find_element_by_id("password").clear()
+driver.find_element_by_id("password").send_keys("admin")
+driver.find_element_by_id("loginbtn").click()
+driver.find_element_by_link_text("Home").click()
+driver.get("http://hackazon.f5demo.com/product/view?id=120")
+# driver.find_element_by_link_text("Pyle PLDN74BTI 7-Inch Double-DIN TFT Touchscreen").click()
+driver.find_element_by_xpath("//a[@id='add_to_cart']/span").click()
+driver.find_element_by_link_text("Show all items in shopping cart").click()
+Select(driver.find_element_by_name("payment_method")).select_by_visible_text("Credit Card")
+driver.find_element_by_xpath("//option[@value='creditcard']").click()
+driver.find_element_by_id("creditCardField").click()
+driver.find_element_by_id("creditCardField").clear()
+driver.find_element_by_id("creditCardField").send_keys("1234 12345 1234 1111")
+driver.find_element_by_id("creditCardCVVField").click()
+driver.find_element_by_id("creditCardCVVField").clear()
+driver.find_element_by_id("creditCardCVVField").send_keys("4523")
+Select(driver.find_element_by_id("creditCardMonthField")).select_by_visible_text("03")
+driver.find_element_by_xpath("//option[@value='3']").click()
+Select(driver.find_element_by_id("creditCardYearField")).select_by_visible_text("2021")
+driver.find_element_by_xpath("//option[@value='2021']").click()
+driver.find_element_by_id("creditCardField").click()
+driver.find_element_by_id("creditCardField").clear()
+driver.find_element_by_id("creditCardField").send_keys("4929706312047402")
+driver.find_element_by_id("couponField").click()
+driver.find_element_by_id("useCouponLink").click()
+driver.find_element_by_id("step1_next").click()
+driver.find_element_by_id("fullName").click()
+driver.find_element_by_id("fullName").clear()
+driver.find_element_by_id("fullName").send_keys("Jose Salazar")
+driver.find_element_by_id("addressLine1").clear()
+driver.find_element_by_id("addressLine1").send_keys("500 North St.")
+driver.find_element_by_id("city").click()
+driver.find_element_by_id("city").clear()
+driver.find_element_by_id("city").send_keys("Los Angeles")
+driver.find_element_by_id("region").click()
+driver.find_element_by_id("region").clear()
+driver.find_element_by_id("region").send_keys("CA")
+driver.find_element_by_id("zip").click()
+driver.find_element_by_id("zip").clear()
+driver.find_element_by_id("zip").send_keys("90210")
+driver.find_element_by_id("phone").click()
+driver.find_element_by_id("phone").clear()
+driver.find_element_by_id("phone").send_keys("305 123 2345")
+driver.find_element_by_id("btn_shipping").click()
+driver.find_element_by_xpath("//div[@id='step3']/div[2]/div[2]/div/div/div/button").click()
+driver.find_element_by_id("place_order").click()
+driver.find_element_by_link_text("Go to Home").click()
+driver.close()
+
+
